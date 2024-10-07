@@ -6,7 +6,7 @@
 
 - name: Start ufw service
   ansible.builtin.systemd_service:
-    name: ufw
+    name: ufw.service
     state: started
     enabled: true
 
