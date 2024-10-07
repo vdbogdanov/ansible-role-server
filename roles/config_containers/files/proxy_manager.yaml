@@ -10,5 +10,5 @@ services:
       - "81"
       - "443"
     volumes:
-      - ./data/config:/data
+      - ./data/app:/data
       - ./data/letsencrypt:/etc/letsencrypt
