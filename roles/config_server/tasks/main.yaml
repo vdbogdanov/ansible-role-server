@@ -1,0 +1,12 @@
+---
+- name: Import tasks from apt.yaml
+  ansible.builtin.import_tasks: apt.yaml
+
+- name: Import tasks from ssh.yaml
+  ansible.builtin.import_tasks: ssh.yaml
+
+- name: Import tasks from ufw.yaml
+  ansible.builtin.import_tasks: ufw.yaml
+
+- name: Import tasks from docker.yaml
+  ansible.builtin.import_tasks: docker.yaml
