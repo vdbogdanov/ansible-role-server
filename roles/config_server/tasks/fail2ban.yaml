@@ -2,7 +2,7 @@
   ansible.builtin.apt:
     deb: https://github.com/fail2ban/fail2ban/releases/download/1.1.0/fail2ban_1.1.0-1.upstream1_all.deb
 
-- name: Copy of compose file to server
+- name: Copy of fail2ban config to server
   ansible.builtin.copy:
     src: "files/sshd.conf"
     dest: "/etc/fail2ban/jail.d/sshd.conf"
