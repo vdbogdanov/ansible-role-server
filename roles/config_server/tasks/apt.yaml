@@ -10,8 +10,7 @@
 
 - name: Install program packages
   ansible.builtin.apt:
-    name:
-      - nmap
+    name: nmap
     state: present
 
 - name: Reboot server
