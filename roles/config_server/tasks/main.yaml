@@ -5,6 +5,9 @@
 - name: Import tasks from ssh.yaml
   ansible.builtin.import_tasks: ssh.yaml
 
+- name: Import tasks from fail2ban.yaml
+  ansible.builtin.import_tasks: fail2ban.yaml
+
 - name: Import tasks from ufw.yaml
   ansible.builtin.import_tasks: ufw.yaml
 

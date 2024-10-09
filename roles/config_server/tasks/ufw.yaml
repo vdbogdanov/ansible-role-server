@@ -14,13 +14,18 @@
   community.general.ufw:
     state: reset
 
-- name: Common setup ufw
-  ansible.builtin.shell:
-    cmd: |
-      ufw default deny incoming
-      ufw default allow outgoing
-      ufw allow 22
-
-- name: Enable ufw
+- name: Set default policies to deny incoming
   community.general.ufw:
-    state: enabled
+    direction: incoming
+    policy: deny
+
+- name: Set default policies to allow outgoing
+  community.general.ufw:
+    direction: outgoing
+    policy: allow
+
+- name: Allow SSH
+  community.general.ufw:
+    rule: allow
+    proto: tcp
+    port: 22
