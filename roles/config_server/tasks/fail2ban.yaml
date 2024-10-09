@@ -4,11 +4,14 @@
 
 - name: Copy of fail2ban config to server
   ansible.builtin.copy:
-    src: "files/sshd.conf"
-    dest: "/etc/fail2ban/jail.d/sshd.conf"
+    src: "files/{{ item }}"
+    dest: "/etc/fail2ban/jail.d/{{ item }}"
     mode: '0755'
     owner: root
     group: root
+  loop:
+    - default.conf
+    - sshd.conf
 
 - name: Retart fail2ban service
   ansible.builtin.systemd_service:
