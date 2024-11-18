@@ -1,15 +1,15 @@
 ---
 - name: Update packages
-  ansible.builtin.apt:
+  ansible.builtin.dnf:
     update_cache: true
 
-- name: Upgrade packages
-  ansible.builtin.apt:
+- name: Upgrade all packages
+  ansible.builtin.dnf:
     name: "*"
     state: latest
 
 - name: Install program packages
-  ansible.builtin.apt:
+  ansible.builtin.dnf:
     name: nmap
     state: present
 
