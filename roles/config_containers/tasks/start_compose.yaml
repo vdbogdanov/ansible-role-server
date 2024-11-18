@@ -14,7 +14,3 @@
     mode: '0755'
     owner: root
     group: root
-
-- name: Run compose project
-  ansible.builtin.command:
-    cmd: "docker compose -f /opt/services/{{ item }}/compose.yaml up -d"
