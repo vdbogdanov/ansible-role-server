@@ -3,5 +3,6 @@
   ansible.builtin.include_tasks: start_compose.yaml
   loop:
     - proxy_manager
+    - wikijs
     - cmdbuild
     - vcenter
