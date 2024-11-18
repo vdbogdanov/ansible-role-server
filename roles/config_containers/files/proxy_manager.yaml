@@ -10,5 +10,9 @@ services:
       - "81"
       - "443"
     volumes:
-      - ./data/app:/data
-      - ./data/letsencrypt:/etc/letsencrypt
+      - proxy_manager/app:/data
+      - proxy_manager/letsencrypt:/etc/letsencrypt
+
+volumes:
+  proxy_manager:
+    name: proxy_manager
