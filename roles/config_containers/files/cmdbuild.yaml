@@ -34,3 +34,7 @@ services:
     depends_on:
       postgres:
         condition: service_healthy
+
+volumes:
+  cmdbuild_db:
+    name: cmdbuild_db
