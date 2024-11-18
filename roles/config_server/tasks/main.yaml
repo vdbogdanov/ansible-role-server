@@ -1,6 +1,6 @@
 ---
-- name: Import tasks from apt.yaml
-  ansible.builtin.import_tasks: apt.yaml
+- name: Import tasks from dnf.yaml
+  ansible.builtin.import_tasks: dnf.yaml
 
 - name: Import tasks from ssh.yaml
   ansible.builtin.import_tasks: ssh.yaml
