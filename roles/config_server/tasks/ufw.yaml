@@ -1,31 +1,20 @@
 ---
-- name: Install ufw
-  ansible.builtin.apt:
-    name: ufw
-    state: present
+- name: Delete cockpit service rule
+  ansible.posix.firewalld:
+    zone: public
+    service: cockpit
+    permanent: true
+    state: absent
 
-- name: Start ufw service
+- name: Delete dhcpv6-client service rule
+  ansible.posix.firewalld:
+    zone: public
+    service: dhcpv6-client
+    permanent: true
+    state: absent
+
+- name: Restart firewalld service
   ansible.builtin.systemd_service:
-    name: ufw.service
-    state: started
+    name: firewalld.service
+    state: restarted
     enabled: true
-
-- name: Reset ufw
-  community.general.ufw:
-    state: reset
-
-- name: Set default policies to deny incoming
-  community.general.ufw:
-    direction: incoming
-    policy: deny
-
-- name: Set default policies to allow outgoing
-  community.general.ufw:
-    direction: outgoing
-    policy: allow
-
-- name: Allow SSH
-  community.general.ufw:
-    rule: allow
-    proto: tcp
-    port: '22'
