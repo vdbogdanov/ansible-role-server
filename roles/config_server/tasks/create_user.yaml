@@ -1,0 +1,8 @@
+---
+- name: Create non root user
+  ansible.builtin.user:
+    name: wizard
+    shell: /bin/bash
+    groups: wheel
+    append: true
+    state: present
