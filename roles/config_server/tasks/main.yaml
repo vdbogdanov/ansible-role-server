@@ -9,7 +9,7 @@
   ansible.builtin.import_tasks: fail2ban.yaml
 
 - name: Import tasks from ufw.yaml
-  ansible.builtin.import_tasks: ufw.yaml
+  ansible.builtin.import_tasks: firewalld.yaml
 
 - name: Import tasks from docker.yaml
   ansible.builtin.import_tasks: docker.yaml
