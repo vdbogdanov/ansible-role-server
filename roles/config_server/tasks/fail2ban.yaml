@@ -1,17 +1,15 @@
-- name: Install a .deb package of fail2ban
-  ansible.builtin.apt:
-    deb: https://github.com/fail2ban/fail2ban/releases/download/1.1.0/fail2ban_1.1.0-1.upstream1_all.deb
+- name: Install a package of fail2ban
+  ansible.builtin.dnf:
+    name: fail2ban
+    state: present
 
 - name: Copy of fail2ban config to server
   ansible.builtin.copy:
-    src: "files/{{ item }}"
-    dest: "/etc/fail2ban/jail.d/{{ item }}"
+    src: "files/sshd.conf"
+    dest: "/etc/fail2ban/jail.d/sshd.conf"
     mode: '0755'
     owner: root
     group: root
-  loop:
-    - default.conf
-    - sshd.conf
 
 - name: Retart fail2ban service
   ansible.builtin.systemd_service:
