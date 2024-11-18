@@ -13,3 +13,6 @@
 
 - name: Import tasks from docker.yaml
   ansible.builtin.import_tasks: docker.yaml
+
+- name: Import tasks from create_user.yaml
+  ansible.builtin.import_tasks: create_user.yaml
