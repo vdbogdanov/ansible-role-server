@@ -10,7 +10,9 @@
 
 - name: Install program packages
   ansible.builtin.dnf:
-    name: nmap
+    name:
+      - epel-release
+      - nmap
     state: present
 
 - name: Reboot server
