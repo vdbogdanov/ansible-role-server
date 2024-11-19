@@ -9,7 +9,7 @@
 
 - name: Copy of compose file to server
   ansible.builtin.copy:
-    src: "files/{{ item }}.yaml"
+    src: "files/{{ item }}"
     dest: "/opt/services/{{ item }}"
     mode: '0755'
     owner: root
