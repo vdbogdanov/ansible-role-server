@@ -1,8 +1,0 @@
----
-- name: Create another user
-  ansible.builtin.user:
-    name: wizard
-    shell: /bin/bash
-    groups: wheel,docker
-    append: true
-    state: present
