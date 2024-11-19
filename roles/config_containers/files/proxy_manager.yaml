@@ -10,9 +10,11 @@ services:
       - "81"
       - "443"
     volumes:
-      - vlme_proxy_manager/app:/data
-      - vlme_proxy_manager/letsencrypt:/etc/letsencrypt
+      - vlme_proxy_manager_data:/data
+      - vlme_proxy_manager_certs:/etc/letsencrypt
 
 volumes:
-  vlme_proxy_manager:
-    name: vlme_proxy_manager
+  vlme_proxy_manager_data:
+    name: vlme_proxy_manager_data
+  vlme_proxy_manager_certs:
+    name: vlme_proxy_manager_certs
