@@ -1,0 +1,16 @@
+---
+- name: Create a directory for compose project
+  ansible.builtin.file:
+    path: "/opt/services/{{ item }}"
+    state: directory
+    mode: '0755'
+    owner: root
+    group: root
+
+- name: Copy of compose file to server
+  ansible.builtin.copy:
+    src: "files/{{ item }}.yaml"
+    dest: "/opt/services/{{ item }}/compose.yaml"
+    mode: '0755'
+    owner: root
+    group: root
