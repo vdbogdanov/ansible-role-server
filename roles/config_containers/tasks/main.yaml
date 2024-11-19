@@ -1,21 +1,8 @@
 ---
-- name: Create a directory for compose project
-  ansible.builtin.file:
-    path: "/opt/services"
-    state: directory
-    mode: '0755'
-    owner: root
-    group: root
-
-- name: Copy of compose file to server
-  ansible.builtin.copy:
-    src: "files/{{ item }}"
-    dest: "/opt/services/{{ item }}"
-    mode: '0755'
-    owner: root
-    group: root
+- name: Include tasks from start_compose.yaml
+  ansible.builtin.include_tasks: start_compose.yaml
   loop:
-    - proxy_manager.yaml
-    - wikijs.yaml
-    - cmdbuild.yaml
-    - vcenter.yaml
+    - proxy_manager
+    - wikijs
+    - cmdbuild
+    - vcenter
