@@ -3,6 +3,6 @@
   ansible.builtin.user:
     name: wizard
     shell: /bin/bash
-    groups: wheel
+    groups: wheel,docker
     append: true
     state: present
