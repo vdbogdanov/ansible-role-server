@@ -4,21 +4,21 @@
     zone: public
     service: cockpit
     permanent: true
-    state: absent
+    state: disabled
 
 - name: Delete dhcpv6-client service rule
   ansible.posix.firewalld:
     zone: public
     service: dhcpv6-client
     permanent: true
-    state: absent
+    state: disabled
 
 - name: Delete ssh service rule
   ansible.posix.firewalld:
     zone: public
     service: ssh
     permanent: true
-    state: absent
+    state: disabled
 
 - name: Enable ssh port
   ansible.posix.firewalld:
