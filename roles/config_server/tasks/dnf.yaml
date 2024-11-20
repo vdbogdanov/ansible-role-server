@@ -8,11 +8,19 @@
     name: "*"
     state: latest
 
-- name: Install program packages
-  ansible.builtin.dnf:
-    name: nmap
-    state: present
-
 - name: Reboot server
   ansible.builtin.reboot:
     reboot_timeout: 3600
+
+- name: Install a package of epel-release
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+
+- name: Install a package of fail2ban
+  ansible.builtin.dnf:
+    name:
+      - fail2ban
+      - nginx
+      - nmap
+    state: present
