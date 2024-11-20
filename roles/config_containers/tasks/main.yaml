@@ -1,8 +1,0 @@
----
-- name: Include tasks from copy_compose.yaml
-  ansible.builtin.include_tasks: copy_compose.yaml
-  loop:
-    - proxy_manager
-    - wikijs
-    - cmdbuild
-    - vcenter
