@@ -1,5 +1,5 @@
 server ansible_ssh_host=0.0.0.0
 
-[all:vars]
+[server:vars]
 ansible_user=username
 ansible_password=password
