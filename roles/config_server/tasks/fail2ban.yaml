@@ -1,13 +1,4 @@
-- name: Install a package of epel-release
-  ansible.builtin.dnf:
-    name: epel-release
-    state: present
-
-- name: Install a package of fail2ban
-  ansible.builtin.dnf:
-    name: fail2ban
-    state: present
-
+---
 - name: Copy of fail2ban config to server
   ansible.builtin.copy:
     src: "files/sshd.conf"
