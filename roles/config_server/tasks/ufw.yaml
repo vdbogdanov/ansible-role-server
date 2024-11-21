@@ -18,14 +18,17 @@
   community.general.ufw:
     direction: incoming
     policy: deny
+    state: enabled
 
 - name: Set default policies to allow outgoing
   community.general.ufw:
     direction: outgoing
     policy: allow
+    state: enabled
 
 - name: Allow SSH
   community.general.ufw:
     rule: allow
     proto: tcp
     port: '22'
+    state: enabled
