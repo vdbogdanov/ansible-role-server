@@ -2,4 +2,4 @@
 - hosts: all
   become: true
   roles:
-    - config_server
+    - setup_server
