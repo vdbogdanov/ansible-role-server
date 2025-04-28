@@ -1,0 +1,14 @@
+---
+- name: Disable PasswordAuthentication
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?PasswordAuthentication"
+    line: "PasswordAuthentication {{ ssh.PasswordAuthentication }}"
+  notify: Restart sshd
+
+- name: Change ssh port
+  ansible.builtin.lineinfile:
+    path: /etc/ssh/sshd_config
+    regexp: "^#?Port"
+    line: "Port {{ ssh.Port }}"
+  notify: Restart sshd

@@ -1,0 +1,10 @@
+---
+- name: Update cache
+  ansible.builtin.dnf:
+    update_cache: true
+
+- name: Upgrade all packages
+  ansible.builtin.dnf:
+    name: "*"
+    state: latest
+  notify: Reboot server

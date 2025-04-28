@@ -1,5 +1,24 @@
 ---
-- hosts: all
+- hosts: server
   become: true
+  vars:
+    firewall:
+      zone: drop
+      ports:
+        - 22/tcp
+        - 80/tcp
+        - 443/tcp
+        - 30443/tcp
+        - 30444/tcp
+        - 6443/tcp
+      trusted:
+        - 10.42.0.0/16
+    ssh:
+      Port: 22
+      PasswordAuthentication: 'yes'
   roles:
-    - setup_server
+    - upgrade-os
+    - firewall
+    - fail2ban
+    - ssh
+    - k3s

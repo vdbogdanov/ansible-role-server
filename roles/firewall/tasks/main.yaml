@@ -1,0 +1,29 @@
+---
+- name: Reset firewalld to defaults
+  ansible.builtin.command:
+    cmd: firewall-cmd --reset-to-defaults
+  when: firewall.ports is defined
+  notify: Restart firewalld
+
+- name: Set default zone to drop
+  ansible.builtin.command:
+    cmd: firewall-cmd --set-default-zone={{ firewall.zone }}
+  when: firewall.ports is defined
+  notify: Restart firewalld
+
+- name: Add sources in trusted zone
+  ansible.builtin.command:
+    cmd: firewall-cmd --zone=trusted --add-source={{ item }} --permanent
+  loop: "{{ firewall.trusted }}"
+  when: firewall.ports is defined
+  notify: Restart firewalld
+
+- name: Allow ports on firewall
+  ansible.posix.firewalld:
+    zone: "{{ firewall.zone }}"
+    port: "{{ item }}"
+    permanent: true
+    state: enabled
+  loop: "{{ firewall.ports }}"
+  when: firewall.ports is defined
+  notify: Restart firewalld

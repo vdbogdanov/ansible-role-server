@@ -1,0 +1,16 @@
+---
+- name: Get info about services
+  ansible.builtin.service_facts:
+
+- name: Install k3s
+  ansible.builtin.shell:
+    cmd: curl -sfL https://get.k3s.io | INSTALL_K3S_EXEC="--disable=traefik" sh -
+  when: "'k3s.service' not in ansible_facts['services']"
+
+- name: Create registry config
+  ansible.builtin.copy:
+    src: "files/registries.yaml"
+    dest: "/etc/rancher/k3s/registries.yaml"
+    mode: '0600'
+    owner: root
+    group: root
