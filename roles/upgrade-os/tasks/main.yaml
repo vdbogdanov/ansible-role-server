@@ -7,7 +7,6 @@
   ansible.builtin.dnf:
     name: "*"
     state: latest
-  notify: Reboot server
 
 - name: Reboot server
   ansible.builtin.reboot:
