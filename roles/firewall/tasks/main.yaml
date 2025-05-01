@@ -7,7 +7,7 @@
 
 - name: Set default zone to drop
   ansible.builtin.command:
-    cmd: firewall-cmd --set-default-zone={{ firewall.zone }}
+    cmd: firewall-cmd --set-default-zone={{ firewall.default_zone }}
   when: firewall.ports is defined
   notify: Restart firewalld
 
@@ -20,7 +20,7 @@
 
 - name: Allow ports on firewall
   ansible.posix.firewalld:
-    zone: "{{ firewall.zone }}"
+    zone: "{{ firewall.default_zone }}"
     port: "{{ item }}"
     permanent: true
     state: enabled
