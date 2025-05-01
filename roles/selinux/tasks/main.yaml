@@ -1,0 +1,7 @@
+---
+- name: Set SELinux permissive mode
+  ansible.builtin.lineinfile:
+    path: /etc/selinux/config
+    regexp: "^SELINUX="
+    line: "SELINUX=permissive"
+  notify: Reboot server

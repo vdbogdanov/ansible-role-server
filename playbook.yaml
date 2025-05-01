@@ -17,7 +17,8 @@
       Port: 22
       PasswordAuthentication: 'yes'
   roles:
-    - upgrade-os
+    - upgrade-packages
+    - selinux
     - firewall
     - fail2ban
     - ssh
